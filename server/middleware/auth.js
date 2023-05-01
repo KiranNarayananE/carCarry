@@ -16,7 +16,6 @@ export const verifyTokenAdmin = async (req, res, next) => {
     if (token.startsWith("Bearer ")) {
       token = token.slice(7, token.length).trimLeft();
     }
-   console.log(token)
     const verified = jwt.verify(token, "Secret");
     req.user = verified;
     if(verified.role=="admin"){
@@ -41,7 +40,6 @@ export const verifyTokenUser = async (req, res, next) => {
     if (token.startsWith("Bearer ")) {
       token = token.slice(7, token.length).trimLeft();
     }
-   console.log(token)
     const verified = jwt.verify(token, "Secret");
     req.user = verified;
     if(verified.role=="user"){
@@ -57,17 +55,17 @@ export const verifyTokenUser = async (req, res, next) => {
 export const verifyTokenDriver = async (req, res, next) => {
   try {
     let token = req.headers["authorization"];
-
     if (!token) {
       return res.status(403).send("Access Denied");
     }
 
     if (token.startsWith("Bearer ")) {
       token = token.slice(7, token.length).trimLeft();
+      console.log(token)
     }
-   console.log(token)
     const verified = jwt.verify(token, "Secret");
     req.user = verified;
+    console.log(verified)
     if(verified.role=="driver"){
     next();
     }

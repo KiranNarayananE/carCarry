@@ -6,7 +6,6 @@ const UserHome = () => {
   return (
     <div >
       <Navbar />
-      
       <Home/>
     </div>
   );

@@ -84,7 +84,7 @@ const Signup = () => {
     form.append("state", formData.state);
     form.append("zip", formData.zip);
     form.append("DLRNO", formData.DLRNO);
-    form.append("vehicleNo", formData.vehicleNo);
+    form.append("DLRCountry", formData.Country);
     form.append("vehicleModel", formData.vehicleModel);
     form.append("Rate", formData.price);
 
@@ -105,7 +105,7 @@ const Signup = () => {
     const response = await DriverSignup(form);
     if (response === 11000) {
       setError("User already exist !");
-    } else if (response === true) {
+    } else if (response) {
       navigate("/driver/approve");
     } else {
       navigate("/driver/error");
@@ -319,13 +319,13 @@ const Signup = () => {
             <div className="col-span-full sm:col-span-3">
               <div className="form-control w-full max-w-xs">
                 <label className="label">
-                  <span className="label-text text-white"> vehicle number</span>
+                  <span className="label-text text-white"> Licence Country</span>
                 </label>
                 <input
                   type="text"
                   placeholder="Type here"
                   name="vehicleNo"
-                  value={formData.vehicleNo}
+                  value={formData.Country}
                   onChange={handleInputChange}
                   className="input input-bordered input-accent w-full max-w-xs text-black"
                 />

@@ -43,29 +43,57 @@ const Otp = () => {
   };
 
   const handleKeyUp = (e) => {
-    if (e.target.value.length === e.target.maxLength) {
+    
       switch (e.target.name) {
         case "input1":
-          input2Ref.current.focus();
+          if(!e.target.value){
+            input1Ref.current.focus();
+          }
+          else{
+            input2Ref.current.focus();
+          }
+          
           break;
         case "input2":
-          input3Ref.current.focus();
+          if(!e.target.value){
+            input1Ref.current.focus(); 
+          }
+          else{
+          input3Ref.current.focus();}
           break;
         case "input3":
-          input4Ref.current.focus();
+          if(!e.target.value){
+            input2Ref.current.focus();
+          }
+          else{
+            input4Ref.current.focus();
+          }
+          
           break;
         case "input4":
-          input5Ref.current.focus();
+          if(!e.target.value){
+            input3Ref.current.focus();
+          }
+          else{
+            input5Ref.current.focus();
+          }
+          
           break;
         case "input5":
-         input6Ref.current.focus();
+          if(!e.target.value){
+            input4Ref.current.focus();
+          }
+          else{
+            input6Ref.current.focus();
+          }
+          
           break;
         
         default:
           break;
       }
-    }
-  };
+    
+  }; 
 
   const handlePassword = () => {
     navigate("/password", { state: { email: email } });

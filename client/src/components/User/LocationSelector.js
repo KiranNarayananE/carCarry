@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { LocationContext } from "../../Context/locationContext";
 
 const  LocationSelector = () => {
@@ -8,6 +8,25 @@ const  LocationSelector = () => {
   const [dropSuggestions, setDropSuggestions] = useState([]);
   const [pickUp, setPickUP] = useState();
   const [dropOFF, setDropOFF] = useState();
+
+  useEffect(() => {
+    // Get the current location of the user
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=${
+          process.env.REACT_APP_MAPBOX_TOKEN
+        }`;
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            const currentLocation = data.features[0].place_name;
+            setPickUP(currentLocation);
+            setPickup(currentLocation);
+          });
+      });
+    }
+  }, [setPickup]);
 
   // * Pickup Suggestions *//
   let bbox = [72.55, 8.15, 78.55, 13.05];

@@ -16,7 +16,7 @@ export default function Home() {
     
     <>
       <div className="relative isolate px-6 pt-14 lg:px-8 pt-20" style={{
-      backgroundImage: 'url("/images/car1.jpeg")',
+      backgroundImage: 'url("/images/slider_03.jpg")',
       height:"700px"
       
     }}>

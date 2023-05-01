@@ -125,6 +125,7 @@ const Approval = () => {
           </tbody>
         </table>
       ) : (
+        
         <div className="overflow-x-auto w-full bg-gray-100">
           <table className="table w-full text-sm text-left text-gray-500 dark:text-gray-100 shadow-lg bg-white">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-100">
@@ -142,7 +143,7 @@ const Approval = () => {
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                          <img src={`/images/${driver.PicturePath}`} alt={driver.vehicleModel} />
+                          <img src={`/images/${driver.DLRImage}`} alt={driver.vehicleModel} />
                         </div>
                       </div>
                       <div>

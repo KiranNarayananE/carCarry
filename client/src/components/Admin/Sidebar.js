@@ -76,12 +76,7 @@ const Siderbar = () => {
                 <span className="flex-1 ml-3 whitespace-nowrap text-real-orange">Driver</span>
               </li>
             </Link>
-            <Link to="/admin/carlist">
-              <li className="flex items-center p-2  mt-4 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                <LocalTaxiIcon className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-                <span className="flex-1 ml-3 whitespace-nowrap text-real-orange">Cars</span>
-              </li>
-            </Link>
+            
             <Link to="/admin/user">
               <li className="flex items-center p-2 mt-4 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <svg
@@ -95,7 +90,7 @@ const Siderbar = () => {
                 <span className="flex-1 ml-3 whitespace-nowrap text-real-orange">Users</span>
               </li>
             </Link>
-            <Link to="/admin/home">
+            <Link to="/admin/trips">
               <li className="flex items-center p-2 mt-4 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <svg
                   aria-hidden="true"
@@ -106,6 +101,12 @@ const Siderbar = () => {
                   <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
                 </svg>
                 <span className="flex-1 ml-3 whitespace-nowrap text-real-orange">Trips</span>
+              </li>
+            </Link>
+            <Link to="/admin/report">
+              <li className="flex items-center p-2  mt-4 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <LocalTaxiIcon className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+                <span className="flex-1 ml-3 whitespace-nowrap text-real-orange">Report</span>
               </li>
             </Link>
             <Link to="/admin/home">

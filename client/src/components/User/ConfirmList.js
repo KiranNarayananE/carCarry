@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import {  useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import { loadStripe } from "@stripe/stripe-js";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import axiosInstance from "../../api/axios";
 const ConfirmList = ({ trips, fetch }) => {
   const token = useSelector((state) => state.userLogin.token);
+  const navigate=useNavigate()
+  const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_KEY}`);
   const [cancelConformation, setCancelConformation] = useState(false);
   const [modal, setModal] = useState(false);
   const [error, setError] = useState("");
@@ -24,7 +28,33 @@ const ConfirmList = ({ trips, fetch }) => {
       return error.response;
     }
   };
-
+  const payementAction = async (id, token) => {
+    try {
+      const response = await axiosInstance.patch(
+        "/payment-action",
+        { id },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  };
+  const handlePayment = async (id) => {
+    const stripe = await stripePromise;
+    const response = await payementAction(id, token);
+    if (response.status === 500) return setError("Network Error");
+    if (response.status === 202) {
+      setModal(false);
+      fetch();
+    }
+    if (response.status === 200) {
+      const result = await stripe.redirectToCheckout({ sessionId: response.data.response });
+      if (result.error) return setError("Server error");
+    }
+  };
 
   const close = () => {
     setModal(false);
@@ -160,10 +190,13 @@ const ConfirmList = ({ trips, fetch }) => {
                           )}
                           <div className="flex justify-between mt-10">
                             {!trip.payment.status && (
-                              <button className="btn btn-success text-lg text-black  " >
+                              <button className="btn btn-success text-lg text-black  "onClick={() => handlePayment(trip._id)} >
                                 Pay <spam className="text-black font-bold ml-1">₹{trip.payment.amount} </spam>
                               </button>
                             )}
+                            <button className="btn btn-success text-lg text-black  "onClick={()=>{navigate(`/booking-details/${trip._id}`)}} >
+                                Details 
+                              </button>
                             <label
                               htmlFor={`my-modal-6-${_id}`}
                               className="btn btn-error text-base text-black"

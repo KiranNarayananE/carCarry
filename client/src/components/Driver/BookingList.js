@@ -1,58 +1,65 @@
 import React from "react";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import {  useNavigate } from "react-router-dom";
 
 const BookingList = ({ trip }) => {
+  const navigate= useNavigate()
   return (
     <>
-      <div class=" lg:w-1/2 mb-6 ">
-        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left ">
-          <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-52 object-cover object-center sm:mb-0 mb-4" src={trip.user.profile} />
-          <div class="flex-grow sm:pl-8 ">
-            <div className="flex gap-2  items-center text-black">
-              <h1 className="text-lg  font-bold">{trip.location.pickup.split(",")[0]}</h1>
-              <ArrowRightAltIcon />
-              <h1 className="text-lg  font-bold">{trip.location.dropoff.split(",")[0]}</h1>
-            </div>
-            <div className="md:inline-flex gap-2">
-              <p className="font-medium text-black-300">
-                Date: <span className="text-black font-medium"> {trip.date}</span>
-              </p>
-              <p className="font-medium text-black-300">
-                Time: <span className="text-black font-medium"> {trip.time} am</span>
-              </p>
-            </div>
-            <div className="flex gap-2 mb-1 ">
-              <p className="font-medium text-black-300">
-                Distance: <span className="text-black font-medium"> {trip.location.distance} Km</span>
-              </p>
-              <p className="font-medium text-black-300">
-                Amount: <span className="text-black font-medium">₹ {trip.payment.amount}</span>
-              </p>
-            </div>
-            <h3 class="text-black-400 ">Customer</h3>
-            <h1 className="font-medium text-black-300">
-              Name: <span className="text-black font-medium">{trip.user.name}</span>
-            </h1>
-            <h1 className="font-medium text-black-300">
-              Phone: <span className="text-black font-medium">{trip.user.phone}</span>
-            </h1>
-            <h1>
-              Payment Status:
-              {trip.payment.status === true ? (
-                <span className="text-green-500 font-medium ml-2">Paid</span>
-              ) : (
-                <span className="text-red-500 ml-2 font-medium">Unpaid</span>
-              )}
-            </h1>
-            <div className="flex gap-10 items-center">
-              <h3 class="text-black  font-Bold  text-xl ">
-                verfication Code: <span className="text-red-500 font-medium">{trip.verficationCode}</span>
-              </h3>
-              {/* <button className="btn btn-error">Cancel</button> */}
-            </div>
-          </div>
-        </div>
-      </div>
+                        <tbody className="text-gray-600 text-sm font-light">
+                            <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                
+                                <td className="py-3 px-6 text-left">
+                                    <div className="flex items-center">
+                                        <div className="mr-2">
+                                            <img className="w-6 h-6 rounded-full" src={`/images/${trip.user.profile}`}/>
+                                        </div>
+                                        <span>{trip.user.name}</span>
+                                    </div>
+                                </td>
+                                <td className="py-3 px-6 text-center whitespace-nowrap">
+                                    <div className=" text-center">
+                                     
+                                        <span className="font-medium ">{trip.location.pickup.split(",")[0]}</span>
+                                    </div>
+                                </td>
+                                <td className="py-3 px-6 text-center">
+                                    <div className="flex items-center justify-center">
+                                    {trip.location.dropoff.split(",")[0]}
+                                    </div>
+                                </td>
+                                <td className="py-3 px-6 text-center">
+                                    <div className="flex items-center justify-center">
+                                    {trip.date}
+                                    </div>
+                                </td>
+                                <td className="py-3 px-6 text-center">
+                                    <div className="flex items-center justify-center">
+                                    {trip.time}
+                                    </div>
+                                </td>
+                                <td className="py-3 px-6 text-center">
+                                {trip.payment.status === true ? 
+                                    <span  className="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Paid</span>:
+                                    <span  className="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Unpaid</span>
+
+                                }
+                                </td>
+                                <td className="py-3 px-6 text-center">
+                                    <div className="flex item-center justify-center">
+                                       
+                                        <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" >
+                                        <button className="btn btn-xs" onClick={()=>{navigate(`/driver/booking-details/${trip._id}`)}}>Details</button>
+                                        </div>
+                                        
+                                    </div>
+                                </td>
+                            </tr>
+                           
+                        </tbody>
+                    
+
+      
     </>
   );
 };

@@ -50,7 +50,6 @@ const AcceptRide = () => {
 
   useEffect(() => {
     fetchBookings();
-    // eslint-disable-next-line react-hooks/exhaustive-deps, no-undef
   }, []);
 
   const fetchBookings = async () => {
@@ -60,7 +59,9 @@ const AcceptRide = () => {
 
   const handleSubmit = async (id) => {
     const response = await acceptRide(id, token);
+    console.log(response)
     if (response.status === 200) {
+      
       setMessage("Trip Accepted");
       setTimeout(() => {
         setMessage("");

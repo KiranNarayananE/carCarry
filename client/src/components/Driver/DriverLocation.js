@@ -9,7 +9,7 @@ import mapboxgl from "mapbox-gl";
 const DriverLoacation = () => {
   const [suggestions, setSuggestions] = useState([]);
   const { location, active, token, driving } = useSelector((state) => state.driverLogin);
-  const [otp, setOtp] = useState();
+  const [id, setid] = useState();
   const [customer, setCustomer] = useState();
   const [error, setError] = useState();
   const dispatch = useDispatch();
@@ -37,9 +37,9 @@ const DriverLoacation = () => {
       return error.response;
     }
   };
-  const getTripDetails = async (token, otp) => {
+  const getTripDetails = async (token, id) => {
     try {
-      const response = await AxiosInstance.patch("/driver/trip-start", { otp }, { headers: { Authorization: `Bearer ${token}` } });
+      const response = await AxiosInstance.patch("/driver/trip-start", { id }, { headers: { Authorization: `Bearer ${token}` } });
       return response;
     } catch (error) {
       return error.response;
@@ -80,7 +80,7 @@ const DriverLoacation = () => {
 
   useEffect(() => {
     fetchLoactionData();
-    // eslint-disable-next-line
+
   }, []);
 
   //* location suggestion *//
@@ -110,17 +110,38 @@ const DriverLoacation = () => {
   //* online *//
   const selectOffline = (event) => {
     const status = event.target.checked;
+  
     if (!status) {
       dispatch(setInactive());
       dispatch(setLocationData());
       return;
     }
-    return dispatch(setActive());
+  
+    // If active is already true, set the current location
+    if (status&&!location) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const { latitude, longitude } = position.coords;
+          const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=${
+            process.env.REACT_APP_MAPBOX_TOKEN
+          }`;
+          fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+              const currentLocation = data.features[0].place_name;
+              dispatch(setLocation({ location: currentLocation, coordinates: [longitude, latitude], active: true }));
+              dispatch(setLocationData());
+            });
+        });
+      }
+    } else {
+      dispatch(setActive());
+    }
   };
 
-  // * send otp and get details *//
+  // * send id and get details *//
   const submitCode = async () => {
-    const response = await getTripDetails(token, otp);
+    const response = await getTripDetails(token, id);
     if (response.status === 200) return setCustomer(response.data.ride);
     if (response.status === 203) return setError("No User found");
     if (response.status === 500) return navigate("/driver/error");
@@ -195,17 +216,15 @@ const DriverLoacation = () => {
           )}
           {!customer && (
             <>
-              <h3 className="font-bold text-lg">Enter the verification code </h3>
+              <h3 className="font-bold text-lg text-black">Enter the trip Id </h3>
               <div className="flex justify-center items-center w-full ">
                 <div className="form-control md:mt-10 w-56 ">
                   <input
                     type="text"
-                    placeholder="otp"
-                    value={otp}
-                    maxLength="7"
-                    minLength="7"
-                    className="input input-bordered "
-                    onChange={(e) => setOtp(e.target.value)}
+                    placeholder="ID"
+                    value={id}
+                    className="input input-bordered text-black"
+                    onChange={(e) => setid(e.target.value)}
                   />
 
                   <button className="btn btn-outline btn-error w-24 my-2 mx-16" onClick={submitCode}>
@@ -218,16 +237,16 @@ const DriverLoacation = () => {
 
           {customer && (
             <>
-              <h3 className="font-bold text-lg text-center ">Customer details </h3>
+              <h3 className="font-bold text-lg text-center text-black">Customer details </h3>
 
-              <div className="card w-full bg-base-100 shadow-xl  mt-5">
+              <div className="card w-full bg-base-100 shadow-xl  mt-5 text-black">
                 <div className="card-body">
-                  <h2 className="card-title">Name: {customer.user[0].name}</h2>
-                  <p>Contact : {customer.user[0].phone}</p>
-                  <p>Pick-up : {customer.location.pickup}</p>
-                  <p>Drop-up : {customer.location.dropoff}</p>
-                  <p>Payment : {customer.payment.amount}</p>
-                  <p>
+                  <h2 className="card-title text-black">Name: {customer.user.name}</h2>
+                  <p className=" text-black">Contact : {customer.user.phone}</p>
+                  <p className=" text-black">Pick-up : {customer.location.pickup}</p>
+                  <p className=" text-black">Drop-up : {customer.location.dropoff}</p>
+                  <p className=" text-black"> Payment : {customer.payment.amount}</p>
+                  <p className=" text-black">
                     Status :
                     {customer.payment.status ? (
                       <span className="text-green-500 ml-2 font-bold">Paid</span>
@@ -237,10 +256,10 @@ const DriverLoacation = () => {
                   </p>
                   <div className="card-actions justify-end">
                     <label htmlFor="my-modal-6" className="btn bg-red-500 text-black">
-                      Decline
+                      Wait
                     </label>
                     <label htmlFor="my-modal-6" className="btn btn-primary" onClick={appectRide}>
-                      Accept
+                      Start To Pickup Now
                     </label>
                   </div>
                 </div>

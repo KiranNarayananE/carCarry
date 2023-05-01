@@ -15,7 +15,7 @@ const GoogleButton = () => {
         });
 
       if (res.status === 201)
-        navigate("/signup", { state: { Phone: res.data.phone } });
+        navigate("/signup", { state: { Phone: res.data.phone,email: res.data.email } });
 
       if (res.status === 500) navigate("/login");
     });

@@ -26,7 +26,7 @@ const UpcomingTrips = () => {
 
   useEffect(() => {
     fetchHistory();
-    // eslint-disable-next-line
+
   }, []);
 
   console.log(trips);
@@ -51,11 +51,32 @@ const UpcomingTrips = () => {
             <div className="h-1 w-44 bg-indigo-500 rounded"></div>
           </div>
           {trips.length !== 0 ? (
-            <div class="flex flex-wrap -m-4 justify-center md:justify-start">
+              
+    <div className="">
+        <div className="min-w-screen  bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
+            <div className="w-full lg:w-5/6">
+                <div className="bg-white shadow-md rounded my-6 overflow-x-scroll scrollbar-hide">
+                    <table className="min-w-max w-full table-auto">
+                        <thead>
+                            <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                <th className="py-3 px-6 text-left">User</th>
+                                <th className="py-3 px-6 text-center">Pickup</th>
+                                <th className="py-3 px-6 text-center">DropOff</th>
+                                <th className="py-3 px-6 text-center">Date</th>
+                                <th className="py-3 px-6 text-center">Time</th>
+                                <th className="py-3 px-6 text-center">Payment Status</th>
+                                <th className="py-3 px-6 text-center">Actions</th>
+                            </tr>
+                        </thead>
               {trips.map((trip, _id) => (
                 <BookingList key={_id} trip={trip} />
               ))}
+              </table>
+                </div>
             </div>
+        </div>
+    </div>
+  
           ) : (
             <div class="flex flex-wrap -m-4 justify-center md:justify-start">
               <h1>No avaible bookings</h1>

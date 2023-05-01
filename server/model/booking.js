@@ -4,12 +4,12 @@ const tripSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
+      ref: "User",
       required: true,
     },
     driver: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "driver",
+      ref: "Driver",
       required: true,
     },
     date: {
@@ -19,6 +19,10 @@ const tripSchema = new mongoose.Schema(
     time: {
       type: String,
       required: true,
+    },
+  emergency: {
+      type: String,
+
     },
     location: {
       pickup: { type: String, required: true },

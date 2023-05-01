@@ -39,11 +39,20 @@ const DriverSchema = new mongoose.Schema(
       type: Number,
     },
 
+    kilometer: {
+      type: String,
+    },
+    place: {
+      type: String,
+    },
     DLRNO: {
       type: String,
       required: true,
     },
     vehicleNo: {
+      type: String,
+    },
+    DLRCountry: {
       type: String,
       required: true,
     },
@@ -52,6 +61,9 @@ const DriverSchema = new mongoose.Schema(
       required: true,
     },
     PicturePath: {
+      type: String,
+    },
+    DLRImage: {
       type: String,
     },
     Approval: {

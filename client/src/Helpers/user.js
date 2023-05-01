@@ -14,7 +14,7 @@ export const options = {
   autoHide: true,
   todayBtn: false,
   clearBtn: true,
-  maxDate: new Date("2023-04-10"),
+  maxDate: new Date("2023-04-31"),
   minDate: new Date("2023-02-01"),
   theme: {
     background: "bg-white ",

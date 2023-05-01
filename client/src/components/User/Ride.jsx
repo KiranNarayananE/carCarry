@@ -60,10 +60,11 @@ const UserDrive = () => {
           <section class="text-gray-900 bg-white body-font">
             <div class="container px-5 md:py-24 py-10 mx-auto ">
               <div class="flex flex-col text-start w-full mb-20">
-                <h1 class="text-4xl font-medium  mb-4 text-gray-900 ">Bookings</h1>
+                <h1 className="text-4xl font-medium  mb-4 text-white bg-regal-blue h-14 rounded-[50px] text-center shadow-[1px_1px_2px_2px_grey]">Bookings</h1>
               </div>
               <ConfirmList trips={confirmTrip} fetch={fetchTrips} />
-              <PendingList trips={pendingTrip} fetch={fetchTrips} />
+              <PendingList trips={pendingTrip} fetch={fetchTrips} />  
+    
               <CancelledList trips={cancelledTrip} />
             </div>
           </section>

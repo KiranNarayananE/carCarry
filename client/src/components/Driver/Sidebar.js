@@ -77,7 +77,7 @@ const Navbar = () => {
                 <span className="flex-1 ml-3 whitespace-nowrap text-real-orange">Pending</span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <a
                 href="/"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
@@ -91,10 +91,10 @@ const Navbar = () => {
                 </svg>
                 <span className="flex-1 ml-3 whitespace-nowrap text-real-orange">Trip History</span>
               </a>
-            </li>
+            </li> */}
             <li>
-              <a
-                href="/"
+            <Link
+                to="/driver/wallet"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <svg
                   aria-hidden="true"
@@ -108,14 +108,14 @@ const Navbar = () => {
                     clipRule="evenodd"></path>
                 </svg>
                 <span className="flex-1 ml-3 whitespace-nowrap text-real-orange">My Earnings</span>
-              </a>
+                </Link>
             </li>
             <li>
               <Link
-                to="/"
+                to="/driver/carprofile"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <Person3Icon className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-                <span className="flex-1 ml-3 whitespace-nowrap text-real-orange">My profile</span>
+                <span className="flex-1 ml-3 whitespace-nowrap text-real-orange">Car profile</span>
               </Link>
             </li>
             <li>
