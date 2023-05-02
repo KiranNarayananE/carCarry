@@ -6,13 +6,13 @@ import { setLogin } from "../../Store/Slice/AdminLogin";
 
 const Login = () => {
   const navigate = useNavigate();
-  const unais ="git push"
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+  const unais = 5
   const AdminLogin = async (Data) => {
     try {
       const response = await AxiosInstance.post("/admin/login", Data);
