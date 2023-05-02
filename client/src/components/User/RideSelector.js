@@ -26,8 +26,13 @@ const RiderSelector = () => {
   
     const location = data.features[0].place_name;
     const parts = location.split(",");
-    const locationName = `${parts[parts.length - 3]}, ${parts[parts.length - 2]}, ${parts[parts.length - 1]}`;
-  
+    let locationName
+   if(parts.length>2){
+     locationName = `${parts[parts.length - 3]}, ${parts[parts.length - 2]}, ${parts[parts.length - 1]}`;
+   }
+   else{
+    locationName=`${parts[0]}`
+   }
     return locationName;
   };
 

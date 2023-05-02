@@ -12,7 +12,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const unais = 5
+
   const AdminLogin = async (Data) => {
     try {
       const response = await AxiosInstance.post("/admin/login", Data);

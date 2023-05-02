@@ -27,7 +27,7 @@ const Navbar = () => {
   
   return (
     
-    <nav className={`bg-regal-blue px-2 sm:px-4  sticky top-0 ${!userNav ? "h-16" : "h-72"}}`}>
+    <nav className={`bg-regal-blue px-2 sm:px-4 z-[1000]  sticky top-0 ${!userNav ? "h-16" : "h-72"}}`}>
       <div className="container flex   flex-wrap items-center justify-between mx-auto ">
         <a href="/" className="flex items-center">
           <span className="self-center text-xl font-semibold whitespace-nowrap text-real-orange">carCarry</span>

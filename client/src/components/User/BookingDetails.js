@@ -38,13 +38,16 @@ const BookingList = () => {
 <div class="py-14 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto">
 
 
-  <div class="flex justify-start item-start space-y-2 flex-col">
-    <h1 class="text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Order #13432</h1>
-    <p class="text-base dark:text-gray-300 font-medium leading-6 text-gray-600">24th April 2023 </p>
-  </div>
+<fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-regal-blue">
+          <div className="space-y-2 col-span-full lg:col-span-1">
+            <p className="font-extrabold text-lg text-real-orange">
+              Trip Details
+            </p>
+            </div>
+        </fieldset>
   <div class="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
     <div class="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
-      <div class="flex flex-col justify-start items-start dark:bg-gray-800 bg-gray-50 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
+      <div class="flex flex-col justify-start items-start dark:bg-gray-800 bg-gray-50 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full rounded-[50px] text-center shadow-[1px_1px_2px_2px_grey]">
         <p class="text-lg md:text-xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">Ride Details</p>
         <div class="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
           <div class="pb-4 md:pb-8 w-full md:w-40">
@@ -74,26 +77,6 @@ const BookingList = () => {
         </div>
         <div class="mt-6 md:mt-0 flex justify-start flex-col md:flex-row items-start md:items-center space-y-4 md:space-x-6 xl:space-x-8 w-full">
 
-
-          {/* <div class="w-full md:w-40">
-            <img class="w-full hidden md:block" src="https://i.ibb.co/s6snNx0/Rectangle-17.png" alt="dress" />
-            <img class="w-full md:hidden" src="https://i.ibb.co/BwYWJbJ/Rectangle-10.png" alt="dress" />
-          </div>
-          <div class="flex justify-between items-start w-full flex-col md:flex-row space-y-4 md:space-y-0">
-            <div class="w-full flex flex-col justify-start items-start space-y-8">
-              <h3 class="text-xl dark:text-white xl:text-2xl font-semibold leading-6 text-gray-800">High Quaility Italic Dress</h3>
-              <div class="flex justify-start items-start flex-col space-y-2">
-                <p class="text-sm dark:text-white leading-none text-gray-800"><span class="dark:text-gray-400 text-gray-300">Style: </span> Italic Minimal Design</p>
-                <p class="text-sm dark:text-white leading-none text-gray-800"><span class="dark:text-gray-400 text-gray-300">Size: </span> Small</p>
-                <p class="text-sm dark:text-white leading-none text-gray-800"><span class="dark:text-gray-400 text-gray-300">Color: </span> Light Blue</p>
-              </div>
-            </div>
-            <div class="flex justify-between space-x-8 items-start w-full">
-              <p class="text-base dark:text-white xl:text-lg leading-6">$20.00 <span class="text-red-300 line-through"> $30.00</span></p>
-              <p class="text-base dark:text-white xl:text-lg leading-6 text-gray-800">01</p>
-              <p class="text-base dark:text-white xl:text-lg font-semibold leading-6 text-gray-800">$20.00</p>
-            </div>
-          </div> */}
         </div>
       </div>
      
@@ -104,8 +87,8 @@ const BookingList = () => {
     <li class="mb-10 ml-6">            
         
         {trips.bookingStatus=="Conform"||trips.bookingStatus=="Started To Pickup Location"?
-        <span class="absolute flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-gray-700">
-        < HourglassTopIcon/>
+        <span class="absolute flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-gray-700 ">
+        < HourglassTopIcon className="text-red-500" />
          </span>
             :
             <span class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-green-900">
@@ -151,6 +134,53 @@ const BookingList = () => {
     </div>
   </div>
 </div>
+<div class="m-5 w-90 w-full">
+<div class="flex items-center mb-5 justify-center w-50">
+    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>First star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Second star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Third star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fourth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+    <svg aria-hidden="true" class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fifth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+    <p class="ml-2 text-sm font-medium text-gray-900 dark:text-white">4.95 out of 5</p>
+</div>
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400 text-center">1,745 global ratings</p>
+<div class="flex items-center mt-4 justify-center">
+    <span class="text-sm font-medium text-blue-600 dark:text-blue-500">5 star</span>
+    <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
+        <div class="h-5 bg-yellow-400 rounded" style={{width: '70%'}}></div>
+    </div>
+    <span class="text-sm font-medium text-blue-600 dark:text-blue-500">70%</span>
+</div>
+<div class="flex items-center mt-4 justify-center">
+    <span class="text-sm font-medium text-blue-600 dark:text-blue-500">4 star</span>
+    <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
+        <div class="h-5 bg-yellow-400 rounded" style={{width: '17%'}}></div>
+    </div>
+    <span class="text-sm font-medium text-blue-600 dark:text-blue-500">17%</span>
+</div>
+<div class="flex items-center mt-4 justify-center">
+    <span class="text-sm font-medium text-blue-600 dark:text-blue-500">3 star</span>
+    <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
+        <div class="h-5 bg-yellow-400 rounded" style={{width: '8%'}}></div>
+    </div>
+    <span class="text-sm font-medium text-blue-600 dark:text-blue-500">8%</span>
+</div>
+<div class="flex items-center mt-4 justify-center">
+    <span class="text-sm font-medium text-blue-600 dark:text-blue-500">2 star</span>
+    <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
+        <div class="h-5 bg-yellow-400 rounded" style={{width: '4%'}}></div>
+    </div>
+    <span class="text-sm font-medium text-blue-600 dark:text-blue-500">4%</span>
+</div>
+<div class="flex items-center mt-4 justify-center">
+    <span class="text-sm font-medium text-blue-600 dark:text-blue-500">1 star</span>
+    <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
+        <div class="h-5 bg-yellow-400 rounded" style={{width: '40%'}}></div>
+    </div>
+    <span class="text-sm font-medium text-blue-600 dark:text-blue-500">1%</span>
+</div>   
+</div>
+
     </>             
 
       
